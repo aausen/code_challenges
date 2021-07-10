@@ -1,14 +1,16 @@
 """A library for drawing ASCII graphics"""
 
-# create a class for canvas
 class Canvas():
-    height = 100
-    width = 100
 
-    def print_canvas(self):
-        print()
+    def __init__(self):
+        self.heigth = 10
+        self.width = 10
+
+    def print_canvas(self, shape):
+        print(self, shape)
 
     def create_rectangle(self, height, width):
+        self.char = "+"
         self.height = height
         self.width = width
 
@@ -16,17 +18,17 @@ class Canvas():
     def clear_all_shapes(self):
         pass
     
-    def draw_rectangle(self):
+    def draw_rectangle(self, x, y):
         pass
-        # self.start_x = 
-        # self.start_y =
+        self.start_x = x
+        self.start_y = y
         # self.end_x =
         # self.end_y =
 
-    def change_fill(self):
-        pass
+    def change_fill(self, char):
+        self.create_rectangle.char = char
 
-    def translate(self):
+    def translate(self, x, y):
         pass
         
 # give canvas specific height and width
