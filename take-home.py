@@ -5,12 +5,12 @@ class Canvas():
     def __init__(self):
         self.heigth = 10
         self.width = 10
+        # canvas = []
 
     def print_canvas(self, shape):
-        print(self, shape)
+        pass
 
     def create_rectangle(self, height, width):
-        self.char = "+"
         self.height = height
         self.width = width
 
@@ -18,15 +18,19 @@ class Canvas():
     def clear_all_shapes(self):
         pass
     
-    def draw_rectangle(self, x, y):
-        pass
-        self.start_x = x
-        self.start_y = y
-        # self.end_x =
-        # self.end_y =
+class Rectangle(Canvas):
+
+    def draw_rectangle(self, start_x, start_y, end_x, end_y, fill_char):
+        start_x = start_x
+        start_y = start_y
+        end_x = end_x
+        end_y = end_y
+        fill_char = fill_char
+
+        return print(fill_char(start_x * end_x))
 
     def change_fill(self, char):
-        self.create_rectangle.char = char
+        self.create_rectangle.fill_char = char
 
     def translate(self, x, y):
         pass
