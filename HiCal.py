@@ -17,6 +17,7 @@ def merge_ranges(time_range):
 
     return merged_meetings
     
+    
 
 
 merge_ranges([(1,3), (2, 4), (7, 9), (3, 10)])
