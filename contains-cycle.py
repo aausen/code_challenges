@@ -21,22 +21,7 @@ def contains_cycle(first_node):
             current = current.next
 
 
-# given answer
-# time complexity O(n)
-# space complexity O(1)
 
-# def contains_cycle(first_node):
-#     slow_runner = first_node
-#     fast_runner = first_node
-
-#     while fast_runner is not None and fast_runner.next is not None:
-#         slow_runner = slow_runner.next
-#         fast_runner = fast_runner.next.next
-
-#         if fast_runner is slow_runner:
-#             return True
-
-#     return False
 
 # Tests
 class Test(unittest.TestCase):
@@ -104,3 +89,20 @@ unittest.main(verbosity=2)
 
 
 # Tests from interview cake
+
+# given answer
+# time complexity O(n)
+# space complexity O(1)
+
+# def contains_cycle(first_node):
+#     slow_runner = first_node
+#     fast_runner = first_node
+
+#     while fast_runner is not None and fast_runner.next is not None:
+#         slow_runner = slow_runner.next
+#         fast_runner = fast_runner.next.next
+
+#         if fast_runner is slow_runner:
+#             return True
+
+#     return False
