@@ -1,3 +1,5 @@
+import unittest
+
 def merge_lists(lst1, lst2):
     merged_list_size = len(lst1) + len(lst2)
     merged_list = [None] * merged_list_size
@@ -8,8 +10,7 @@ def merge_lists(lst1, lst2):
     while current_idx_merged < merged_list_size:
         is_lst2_exhausted = current_idx_lst2 >= len(lst2)
         is_lst1_exhausted = current_idx_lst1 >= len(lst1)
-        first_unmerged_lst1 = lst1[current_idx_lst1]
-        first_unmerged_lst2 = lst2[current_idx_lst2]
+       
 
         if (not is_lst2_exhausted and 
                 (is_lst1_exhausted or 
@@ -25,6 +26,34 @@ def merge_lists(lst1, lst2):
 
     return merged_list
 
+# Tests
+class Test(unittest.TestCase):
+    def test_both_lists_are_empty(self):
+        actual = merge_lists([], [])
+        expected = []
+        self.assertEqual(actual, expected)
+
+    def test_first_list_is_empty(self):
+        actual = merge_lists([], [1, 2, 3])
+        expected = [1, 2, 3]
+        self.assertEqual(actual, expected)
+
+    def test_second_list_is_empty(self):
+        actual = merge_lists([4, 5, 6], [])
+        expected = [4, 5, 6]
+        self.assertEqual(actual, expected)
+
+    def test_both_lists_have_diff_nums(self):
+        actual = merge_lists([1, 3, 4], [2, 5, 6])
+        expected = [1, 2, 3, 4, 5, 6]
+        self.assertEqual(actual, expected)
+    
+    def test_both_have_dif_len_lists(self):
+        actual = merge_lists([1, 3, 4], [2, 5, 6, 7, 8, 9])
+        expected = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.assertEqual(actual, expected)
+
+unittest.main(verbosity=2)
 
 
     # take in two lists
