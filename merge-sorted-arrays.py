@@ -6,14 +6,19 @@ def merge_lists(lst1, lst2):
     current_idx_lst2 = 0 
     current_idx_merged = 0
     while current_idx_merged < merged_list_size:
+        is_lst2_exhausted = current_idx_lst2 >= len(lst2)
+        is_lst1_exhausted = current_idx_lst1 >= len(lst1)
         first_unmerged_lst1 = lst1[current_idx_lst1]
         first_unmerged_lst2 = lst2[current_idx_lst2]
 
-        if first_unmerged_lst2 < first_unmerged_lst1:
-            merged_list[current_idx_merged] = first_unmerged_lst2
+        if (not is_lst2_exhausted and 
+                (is_lst1_exhausted or 
+                lst2[current_idx_lst2] < lst1[current_idx_lst1])):
+        
+            merged_list[current_idx_merged] = lst2[current_idx_lst2]
             current_idx_lst2 += 1
         else:
-            merged_list[current_idx_merged] = first_unmerged_lst1
+            merged_list[current_idx_merged] = lst1[current_idx_lst1]
             current_idx_lst1 += 1
 
         current_idx_merged += 1
