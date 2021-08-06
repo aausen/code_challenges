@@ -62,4 +62,8 @@ class Test(unittest.TestCase):
         result = is_first_come_first_served([77, 3, 22, 5], [1, 55, 33, 2], [77, 1, 3, 22, 55, 5, 33, 2])
         self.assertTrue(result)
 
+    def test_orders_out_of_order(self):
+        result = is_first_come_first_served([1, 3, 4], [2, 5, 6], [6, 1, 3, 4, 2, 5])
+        self.assertFalse(result)
+
 unittest.main(verbosity=2)
