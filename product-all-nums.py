@@ -1,4 +1,3 @@
-from typing import ForwardRef
 
 
 def get_products_of_all_ints_except_at_index(int_list):
@@ -14,7 +13,8 @@ def get_products_of_all_ints_except_at_index(int_list):
         product_so_far *= int_list[i]
 
     product_so_far = 1
-    for i in (len(int_list) -1, -1, -1):
+    for i in range(len(int_list) -1, -1, -1):
         products_of_all_ints_except_at_index[i] *=  product_so_far
+        product_so_far *= int_list[i]
 
     return products_of_all_ints_except_at_index
