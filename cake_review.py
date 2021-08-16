@@ -40,4 +40,16 @@ class Tests(unittest.TestCase):
         expected = ['a']
         self.assertEqual(list_of_char, expected)
 
+## Can two movies fill the time of a flight 8/16
+def can_two_movies_fill_flight(movie_lengths, flight_length):
+
+    movie_lengths_seen = set()
+    for current_movie in movie_lengths:
+        second_movie = flight_length - current_movie
+        if second_movie in movie_lengths_seen:
+            return True
+        movie_lengths_seen.add(current_movie)
+    return False
+can_two_movies_fill_flight([3, 4, 5], 7)
+
 unittest.main(verbosity=2)
