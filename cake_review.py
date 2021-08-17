@@ -52,4 +52,26 @@ def can_two_movies_fill_flight(movie_lengths, flight_length):
     return False
 can_two_movies_fill_flight([3, 4, 5], 7)
 
+## apple stocks
+
+def get_max_profit(stock_prices):
+    if len(stock_prices) < 2:
+        raise ValueError('We need two prices to get a profit!')
+
+    max_profit = stock_prices[1] - stock_prices[0]
+    min_price = stock_prices[0]
+
+    for current_time in range(1, len(stock_prices)):
+        current_price = stock_prices[current_time]
+
+        possible_profit = current_price - min_price
+
+        max_profit = max(possible_profit, max_profit)
+
+        min_price = min(current_price, min_price)
+    
+    return max_profit
+
+
+
 unittest.main(verbosity=2)
