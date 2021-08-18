@@ -72,6 +72,41 @@ def get_max_profit(stock_prices):
     
     return max_profit
 
+## Highest Product of 3
+
+def highest_product_of_three(list_of_ints):
+    if len(list_of_ints) < 3:
+        raise ValueError('There needs to be 3 numbers')
+
+    highest_product_of_3 = list_of_ints[0] * list_of_ints[1] * list_of_ints[2]
+    
+    highest_product_of_2 = list_of_ints[0] * list_of_ints[1]
+    lowest_product_of_2 = list_of_ints[0] * list_of_ints[1]
+    
+    highest = max(list_of_ints[0], list_of_ints[1])
+    lowest = min(list_of_ints[0], list_of_ints[1])
+
+    for i in range(2, len(list_of_ints)):
+        current = list_of_ints[i]
+
+        highest_product_of_3 = max(highest_product_of_3,
+                                    current * highest_product_of_2,
+                                    current * lowest_product_of_2)
+
+        highest_product_of_2 = max(highest_product_of_2, 
+                                    current * highest,
+                                    current * lowest)
+
+        lowest_product_of_2 = min(lowest_product_of_2, 
+                                    current * highest,
+                                    current * lowest)
+
+        highest = max(highest, current)
+
+        lowest = min(lowest, current)
+
+    return highest_product_of_3
+
 
 
 unittest.main(verbosity=2)
