@@ -107,6 +107,34 @@ def highest_product_of_three(list_of_ints):
 
     return highest_product_of_3
 
+## Return merged arrays
+
+def merge_lists(list1, list2):
+    merged_list_size = len(list1 + list2)
+    merged_list = [None] * merged_list_size
+    current_idx_list1 = list1[0]
+    current_idx_list2 = list2[0]
+    current_idx_merged = merged_list[0]
+
+    while current_idx_merged < merged_list_size:
+        is_list1_exhausted = current_idx_list1 >= len(list1)
+        is_list2_exhausted = current_idx_list2 >= len(list2)
+
+        if (not is_list1_exhausted and 
+                (is_list2_exhausted or 
+                list1[current_idx_list1] < list2[current_idx_list2])):
+            merged_list[current_idx_merged] = list1[current_idx_list1]
+            current_idx_list1 += 1
+        
+
+        else: 
+            merged_list[current_idx_merged] = list2[current_idx_list2]
+            current_idx_list2 += 1
+            
+        current_idx_merged += 1
+
+    return merged_list
+
 
 
 unittest.main(verbosity=2)
