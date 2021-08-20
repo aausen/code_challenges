@@ -135,6 +135,56 @@ def merge_lists(list1, list2):
 
     return merged_list
 
+## Merge meeting times
+
+def merged_ranges(meeting_times):
+    sorted_meetings = sorted(meeting_times)
+    merged_meetings = [sorted_meetings[0]]
+
+    for current_meeting_start_time, current_meeting_end_time in sorted_meetings:
+        last_merged_meeting_start, last_merged_meeting_end = merged_meetings[-1]
+
+        if (current_meeting_start_time <= last_merged_meeting_end):
+            merged_meetings[-1] = (last_merged_meeting_start, 
+                                    max(last_merged_meeting_end,
+                                        current_meeting_end_time))
+        else:
+            merged_meetings.append((current_meeting_start_time, current_meeting_end_time))
+
+    return merged_meetings
+
+# Tests
+
+class Test(unittest.TestCase):
+    def test_two_meetings(self):
+        meeting_times = [(1, 3), (2, 4)]
+        result = merged_ranges(meeting_times)
+        expected = [(1, 4)]
+        self.assertEqual(result, expected)
+
+    def test_no_overlap(self):
+        meeting_times = [(1, 2), (4, 5)]
+        result = merged_ranges(meeting_times)
+        expected = [(1, 2), (4, 5)]
+        self.assertEqual(result, expected)
+
+    def test_end_and_start_same(self):
+        meeting_times = [(1, 4), (4, 6)]
+        result = merged_ranges(meeting_times)
+        expected = [(1, 6)]
+        self.assertEqual(result, expected)
+
+    def test_many_meetings(self):
+        meeting_times = [(1, 3), (4, 6), (5, 7), (7, 8)]
+        result = merged_ranges(meeting_times)
+        expected = [(1, 3), (4, 8)]
+        self.assertEqual(result, expected)
+
+    def test_meetings_out_of_order(self):
+        meeting_times = [(3, 5), (1, 4), (8, 9), (3, 8)]
+        result = merged_ranges(meeting_times)
+        expected = [(1, 9)]
+        self.assertEqual(result, expected)
 
 
 unittest.main(verbosity=2)
