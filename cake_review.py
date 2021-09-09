@@ -227,4 +227,23 @@ def find_rotation_point(words):
         if floor_index + 1 == ceiling_index:
             return ceiling_index
 
+# merge meetings HiCal
+
+def merge_ranges(meetings):
+    sorted_meetings = sorted(meetings)
+    merged_meetings = [sorted_meetings[0]]
+
+    for current_meeting in sorted_meetings[1:]:
+        start_current, end_current = current_meeting
+        start_last, end_last = merged_meetings[-1]
+
+        if (start_current <= end_last):
+            merged_meetings[-1] = (start_last, 
+                                    max(end_current, end_last))
+        else:
+            merged_meetings.append((start_current, end_current))
+
+    return merged_meetings
+
+
 unittest.main(verbosity=2)
