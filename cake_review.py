@@ -245,5 +245,22 @@ def merge_ranges(meetings):
 
     return merged_meetings
 
+# top scores
+
+def sort_scores(unsorted_scores, highest_possible_score):
+    score_counts = [0] * (highest_possible_score + 1)
+
+    for score in unsorted_scores:
+        score_counts[score] += 1
+
+    sorted_scores = []
+
+    for score in range(len(score_counts) -1, -1, -1):
+        count = score_counts[score]
+
+        for time in range(count):
+            sort_scores.append(score)
+
+    return sorted_scores
 
 unittest.main(verbosity=2)
