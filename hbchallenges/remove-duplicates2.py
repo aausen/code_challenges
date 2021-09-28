@@ -7,3 +7,10 @@ def remove_duplicates(items):
     return True
 
 remove_duplicates([1, 2, 3, 3])
+
+# other solution
+
+def dedupe(items):
+    seen = set()
+
+    
