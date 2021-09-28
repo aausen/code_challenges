@@ -12,6 +12,16 @@ def recursive_index(needle, haystack):
 
     return _recursive_index(needle, haystack, 0)
 
+def fit_to_width(string, limit):
+    # split the list at white space to make list
+    # pop last item out of the list
+    # if item is less or equal to limit, 
+    # check 
+    # lines = list of strings
+    # for line in lines
+    # print(line)
+    pass
+
 class Test(unittest.TestCase):
 
     def test_in_haystack(self):
