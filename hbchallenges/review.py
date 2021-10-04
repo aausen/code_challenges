@@ -22,6 +22,23 @@ def fit_to_width(string, limit):
     # print(line)
     pass
 
+def find_missing_num(list_nums, max_num):
+  
+    # create new list * max num of false + 1
+    # loop through list 
+    # list at the number = True
+    # loop through new list to scan for false
+    # return index at false
+
+    numbers_checked = [False] * (max_num + 1)
+
+    for num in list_nums:
+        numbers_checked[num] = True
+
+    for x in range(1, len(numbers_checked)):
+        if numbers_checked[x] == False:
+            return x
+
 class Test(unittest.TestCase):
 
     def test_in_haystack(self):
