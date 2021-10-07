@@ -19,6 +19,17 @@ def is_permutation(first, second):
         return True
     return False
 
+#______________________1.3______________________________#
+def urlify(char_string, char_len):
+    char_list = list(char_string)
+    print("before", char_list)
+    for char in char_list:
+        if char == " ":
+            char_list[char] == "%20"
+    print("after", char_list)
+
+
+
 class Tests(unittest.TestCase):
 
     #______________1.1_____________________#
