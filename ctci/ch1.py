@@ -21,12 +21,28 @@ def is_permutation(first, second):
 
 #______________________1.3______________________________#
 def urlify(char_string, char_len):
-    char_list = list(char_string)
-    print("before", char_list)
-    for char in char_list:
+    """Replace white space with "%20"."""
+    new_char_str = char_string.strip()
+    char_list = list(new_char_str)
+    for i, char in enumerate(char_list):
         if char == " ":
-            char_list[char] == "%20"
-    print("after", char_list)
+            char_list[i] = "%20"
+    new_url = "".join(char_list)
+    return new_url
+
+#______________________1.4________________________________#
+def is_palendrome_permutaion(stringA):
+    """Check if string is permutation of a palendrome."""
+
+    unpaired_char = set()
+
+    for char in stringA.replace(" ", ""):
+        if char in unpaired_char:
+            unpaired_char.remove(char)
+        else:
+            unpaired_char.add(char)
+
+    return len(unpaired_char) <= 1
 
 
 
@@ -85,8 +101,25 @@ class Tests(unittest.TestCase):
         actual = is_permutation("foot", "toof")
         expected = True
         self.assertEqual(actual, expected)
+#___________________1.3____________________#
+    def test_john_smith(self):
+        actual = urlify("Mr John Smith    ", 13)
+        expected = "Mr%20John%20Smith"
+        self.assertEqual(actual, expected)
 
-
-
+    def test_short_phrase(self):
+        actual = urlify("hello you  ", 9)
+        expected = "hello%20you"
+        self.assertEqual(actual, expected)
+#__________________1.4_______________________#
+    def test_is_palendrome(self):
+        actual = is_palendrome_permutaion("toac tca")
+        expected = True
+        self.assertEqual(actual, expected)
+    
+    def test_is_not_palendrome(self):
+        actual = is_palendrome_permutaion("this is")
+        expected = False
+        self.assertEqual(actual, expected)
 
 unittest.main(verbosity=2)
