@@ -30,15 +30,15 @@ def find_missing_num(list_nums, max_num):
     # loop through new list to scan for false
     # return index at false
 
-    numbers_checked = [False] * (max_num + 1)
+    # numbers_checked = [False] * (max_num + 1)
 
-    for num in list_nums:
-        numbers_checked[num] = True
+    # for num in list_nums:
+    #     numbers_checked[num] = True
 
-    for x in range(1, len(numbers_checked)):
-        if numbers_checked[x] == False:
-            return x
-
+    # for x in range(1, len(numbers_checked)):
+    #     if numbers_checked[x] == False:
+    #         return x
+    pass
 class Test(unittest.TestCase):
 
     def test_in_haystack(self):
