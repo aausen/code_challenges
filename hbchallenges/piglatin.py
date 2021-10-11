@@ -33,21 +33,24 @@ def pig_latin(phrase):
     # if empty raise error
 
     list_of_words = phrase.split(" ")
-    pig_latin_phrase = ""
+    pig_latin_phrase = []
     i = 0
     while i <= len(list_of_words) - 1:
         word = list_of_words[i]
         if word[0] in ["a", "e", "i", "o", "u"]:
-            pig_latin_phrase += (word + "yay" + " ")
+            # pig_latin_phrase += (word + "yay" + " ")
+            pig_latin_phrase.append(word + "yay")
         else:
             word = list(word)
             end_letter = word.pop(0)
             join_word = "".join(word)
             new_word = join_word + end_letter
-            pig_latin_phrase += (new_word + "ay" + " ")
+            # pig_latin_phrase += (new_word + "ay" + " ")
+            pig_latin_phrase.append(new_word + "ay")
 
         i += 1
-    return pig_latin_phrase
+    # return pig_latin_phrase.strip()
+    return " ".join(pig_latin_phrase)
     
 
 if __name__ == '__main__':
