@@ -55,3 +55,21 @@ def reverse_characters(message, left_index, right_index):
 
         left_index += 1
         right_index -= 1
+
+def is_first_come_first_served(take_out_orders, dine_in_orders, served_orders):
+    take_out_index = 0
+    dine_in_index = 0
+    take_out_max_index = len(take_out_orders) - 1
+    dine_in_max_index = len(dine_in_orders) -1
+
+    for order in served_orders:
+        if take_out_index <= take_out_max_index and order == take_out_orders[take_out_index]: 
+            take_out_index += 1
+
+        elif dine_in_index <= dine_in_max_index and order == dine_in_orders[dine_in_index]:
+            dine_in_index += 1
+        else: 
+            return False
+    if dine_in_index != len(dine_in_orders) or take_out_index != len(take_out_orders):
+        return False
+    return True
