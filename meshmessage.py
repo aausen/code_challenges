@@ -34,4 +34,3 @@ def bfs(graph, start_node, end_node):
                 how_we_reached_nodes[neighbor] = current_node
 
     return None
-
