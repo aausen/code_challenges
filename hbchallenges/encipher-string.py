@@ -21,13 +21,28 @@ It should preserve capitalization, whitespace, and any special characters:
 def rot_encode(shift, txt):
     """Encode `txt` by shifting its characters to the right."""
 
-# take in a number and a string
-# give alphabet to start with
-# enumerate the given list
-# if the given letter is equal to letter from alphabet
-#   find given idx and + 1 then print new letter with index
-# else print the character
-#  
+    encoded_string = ""
+    for char in txt:
+        char = ord(char)
+
+        if 65 <= char <= 90:
+            new_char = char + shift
+            if new_char > 90:
+                new_char -= 26
+            new_char = chr(new_char)
+            encoded_string += new_char
+
+        elif 97 <= char <= 122:
+            new_char = char + shift
+            if new_char > 122:
+                new_char -= 26
+            new_char = chr(new_char)
+            encoded_string += new_char
+        
+        else:
+            char = chr(char)
+            encoded_string += char
+    return encoded_string
 
 if __name__ == '__main__':
     import doctest
