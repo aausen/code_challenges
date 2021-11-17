@@ -34,18 +34,27 @@ Since there's a tie, the first was returned)
 
 def most_active(bio_data):
     """Find window of time when most authors were active."""
-    years = [0] * 100
+    century = [0] * 100
 
     for person, start, end in bio_data:
         for year in range(start, end + 1):
-            years[year - 1900] += 1
+            century[year - 1900] += 1
 
     best = 0
-    current = 0
-    most_active = (0, 0)
-    for num_active in years:
+    in_best = True
+    best_start = 0
+    best_end = 100
+
+    for year, num_active in enumerate(century):
         if num_active > best:
-            most_active[0] = 
+            best = num_active
+            in_best = True
+            best_start = year
+        elif num_active < best and in_best:
+            best_end = year - 1
+            in_best = False
+
+    return best_start + 1900, best_end + 1900
 
 if __name__ == '__main__':
     import doctest
