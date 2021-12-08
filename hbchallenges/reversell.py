@@ -49,12 +49,18 @@ def reverse_linked_list(head):
     next = head.next
 
     while current:
-        current.next = previous
-        previous = current
-        current = current.next
-        next = current.next.next
+        if current.next.next != None:
+            current.next = previous
+            previous = current
+            next = current.next.next
+            current = current.next
+            
+        else:
+            current.next = previous
+            previous = current
+            current = current.next
 
-    return head
+    return current
 
 # 1 p=none, c=1, next=2
 # while:
