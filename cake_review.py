@@ -1,5 +1,6 @@
 import unittest
 import random
+from collections import dequeue
 
 ## Reverse string in place 8/16
 def reverse(list_of_char):
@@ -327,4 +328,23 @@ def get_max_profit(stock_prices):
 
     return max_profit
 
+# breadth first search practice
+def bfs(graph, start_node, end_node):
+    nodes_to_visit = dequeue
+    nodes_to_visit.append(start_node)
+
+    nodes_already_seen = set([start_node])
+
+    while len(nodes_to_visit) > 0:
+        current_node = nodes_to_visit.popleft()
+
+        if current_node == end_node:
+            break
+        
+        for neighbor in graph[current_node]:
+            if neighbor not in nodes_already_seen:
+                nodes_already_seen.add(neighbor)
+                nodes_to_visit.append(neighbor)
+        
+        
 unittest.main(verbosity=2)
